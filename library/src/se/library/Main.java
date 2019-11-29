@@ -11,7 +11,9 @@ package se.library;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("ja");
+        
+        Menu menu = new Menu();
+        menu.displayMeny();
     }
     
 }
