@@ -122,7 +122,10 @@ public class Menu {
     
         switch(choise){
             case 1:
-                //log in
+                System.out.println("Ange din personnummer");
+                String personnummer = sc.nextLine();
+                LogIn inloggning= new LogIn();
+                inloggning.Test(personnummer);
                 break;
             case 2:
                 //skapa konto
