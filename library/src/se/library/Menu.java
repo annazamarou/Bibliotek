@@ -43,7 +43,7 @@ public class Menu {
                 user();
                 break;
             case 3:
-                displayMenu();
+                System.exit(0);
                 break;
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
