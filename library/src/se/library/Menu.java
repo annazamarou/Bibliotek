@@ -28,7 +28,7 @@ public class Menu {
         }
     }
     
-    public void displayMeny(){
+    public void displayMenu(){
         System.out.println("Välkommen till Bibliotek!");
         int choise = nextInt("/n [1] Bibliotekarie"
                 + "/n [2] Låntagare"
@@ -42,7 +42,7 @@ public class Menu {
                 user();
                 break;
             case 3:
-                displayMeny();
+                displayMenu();
                 break;
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
@@ -63,7 +63,7 @@ public class Menu {
                 userHandling();
                 break;
             case 3:
-                displayMeny();
+                displayMenu();
                 break;
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
@@ -120,13 +120,13 @@ public class Menu {
     
         switch(choise){
             case 1:
-                //min sida
+                myPage();
                 break;
             case 2:
                 //boklista
                 break;
             case 3:
-                displayMeny();
+                displayMenu();
                 break;
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
