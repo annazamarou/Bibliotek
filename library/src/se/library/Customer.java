@@ -50,9 +50,6 @@ public class Customer {
         return borrowedBooks;
     }
 
-    public ArrayList<Book> getReservedBooks() {
-        return reservedBooks;
-    }
 
     @Override
     public String toString() {
