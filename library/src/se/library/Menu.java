@@ -40,7 +40,7 @@ public class Menu {
                 librarian();
                 break;
             case 2:
-                user();
+                userChoice();
                 break;
             case 3:
                 System.exit(0);
@@ -114,6 +114,27 @@ public class Menu {
                 break;
         }
     }  
+     
+    public void userChoice(){
+        int choise = nextInt("\n[1]Log in"
+                + "\n[2]Skapa ny konto"
+                + "\n[3] Gå tillbaka");
+    
+        switch(choise){
+            case 1:
+                //log in
+                break;
+            case 2:
+                //skapa konto
+                break;
+            case 3:
+                displayMenu();
+                break;
+            default:
+                System.out.println("Du har angivit fel nummer. Försök igen!");
+                break;
+        }
+    }  
 
     public void user(){
         int choise = nextInt("\n[1] Mina sida"
@@ -128,7 +149,7 @@ public class Menu {
                 //boklista
                 break;
             case 3:
-                displayMenu();
+                userChoice();
                 break;
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
