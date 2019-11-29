@@ -21,6 +21,30 @@ public class Book {
         this.isAvailable = isAvailable;
         this.isAgeRestricted = isAgeRestricted;
     }
+    public Book(String title, String author){
+        this.title = title;
+        this.author = author;
+    }
+    public Book(){
+        
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    public void setIsAgeRestricted(boolean isAgeRestricted) {
+        this.isAgeRestricted = isAgeRestricted;
+    }
+    
 
     public String getTitle() {
         return title;
