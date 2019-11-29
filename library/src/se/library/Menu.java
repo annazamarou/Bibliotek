@@ -30,9 +30,9 @@ public class Menu {
     
     public void displayMenu(){
         System.out.println("Välkommen till Bibliotek!");
-        int choise = nextInt("/n [1] Bibliotekarie"
-                + "/n [2] Låntagare"
-                + "/n [0] Avsluta");
+        int choise = nextInt("\n[1] Bibliotekarie"
+                + "\n[2] Låntagare"
+                + "\n[0] Avsluta");
     
         switch(choise){
             case 1:
@@ -51,9 +51,9 @@ public class Menu {
     }  
     
     public void librarian(){
-        int choise = nextInt("/n [1] Hantera böcker"
-                + "/n [2] Hantera kundiformation"
-                + "/n [0] Gå tillbaka");
+        int choise = nextInt("\n[1] Hantera böcker"
+                + "\n[2] Hantera kundiformation"
+                + "\n[0] Gå tillbaka");
     
         switch(choise){
             case 1:
@@ -72,9 +72,9 @@ public class Menu {
     }  
     
     public void bookHandling(){
-        int choise = nextInt("/n [1] Lägg till böcker"
-                + "/n [2] Tar bort böcker"
-                + "/n [0] Gå tillbaka");
+        int choise = nextInt("\n[1] Lägg till böcker"
+                + "\n[2] Tar bort böcker"
+                + "\n[0] Gå tillbaka");
     
         switch(choise){
             case 1:
@@ -93,9 +93,9 @@ public class Menu {
     }  
     
      public void userHandling(){
-        int choise = nextInt("/n [1] Lägg till kund"
-                + "/n [2] Ändra/tar bort  användaren"
-                + "/n [0] Gå tillbaka");
+        int choise = nextInt("\n[1] Lägg till kund"
+                + "\n[2] Ändra/tar bort  användaren"
+                + "\n[0] Gå tillbaka");
     
         switch(choise){
             case 1:
@@ -114,9 +114,9 @@ public class Menu {
     }  
 
     public void user(){
-        int choise = nextInt("/n [1] Mina sida"
-                + "/n [2] Visa Boklista"
-                + "/n [0] Gå tillbaka");
+        int choise = nextInt("\n[1] Mina sida"
+                + "\n[2] Visa Boklista"
+                + "\n[0] Gå tillbaka");
     
         switch(choise){
             case 1:
@@ -135,9 +135,9 @@ public class Menu {
     }  
      
      public void myPage(){
-        int choise = nextInt("/n [1] Hantera reserverade böcker"
-                + "/n [2] Återlämna lånade böcker"
-                + "/n [0] Gå tillbaka");
+        int choise = nextInt("\n[1] Hantera reserverade böcker"
+                + "\n[2] Återlämna lånade böcker"
+                + "\n[0] Gå tillbaka");
     
         switch(choise){
             case 1:
