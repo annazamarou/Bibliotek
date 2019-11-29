@@ -29,6 +29,7 @@ public class Menu {
     }
     
     public void displayMenu(){
+        while(true){
         System.out.println("Välkommen till Bibliotek!");
         int choise = nextInt("\n[1] Bibliotekarie"
                 + "\n[2] Låntagare"
@@ -47,6 +48,7 @@ public class Menu {
             default:
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
+        }
         }
     }  
     
