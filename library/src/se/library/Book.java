@@ -40,12 +40,11 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", isAvailable=" + isAvailable +
-                ", isAgeRestricted=" + isAgeRestricted +
-                '}';
+        return "Titel: " + title + '\n' +
+               "Författare: " + author + '\n' + 
+                "I bibliotek: " + "" + isAvailable +
+                " Åldersgräns: " + "" + isAgeRestricted + '\n' +
+                "_______________________________________";
     }
 }
 
