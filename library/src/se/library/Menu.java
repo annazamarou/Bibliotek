@@ -80,10 +80,13 @@ public class Menu {
     
         switch(choice){
             case 1:
-                //lägg till böcker
+                Admin addBook= new Admin();
+                addBook.addBook();
                 break;
             case 2:
-                //tar bort böcker
+                Admin removeBook = new Admin();
+                removeBook.removeBook(sc.nextInt());
+                sc.close();
                 break;
             case 3:
                 librarian();
@@ -101,10 +104,14 @@ public class Menu {
     
         switch(choice){
             case 1:
-                //lägg använadaren
+                Admin newUser = new Admin();
+                newUser.addBorrower(sc.nextLine());
+                sc.close();
                 break;
             case 2:
-                //tar bort användaren
+                Admin removeUser = new Admin();
+                removeUser.removeBorrower(sc.nextInt());
+                sc.close();
                 break;
             case 3:
                 librarian();
@@ -128,7 +135,9 @@ public class Menu {
                 inloggning.Test(personnummer);
                 break;
             case 2:
-                //skapa konto
+                Admin newUser = new Admin();
+                newUser.addBorrower(sc.nextLine());
+                sc.close();
                 break;
             case 3:
                 displayMenu();
