@@ -161,9 +161,6 @@ public class Menu {
                     System.out.println("Välkommen tillbaka " + customerThisSession.getName());
                     user();
                 }
-
-                
-
                 break;
             case 2:
                 System.out.print("Name: ");
