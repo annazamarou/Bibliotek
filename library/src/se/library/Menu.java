@@ -143,8 +143,8 @@ public class Menu {
     }
 
     public int userChoice() {
-        int choice = nextInt("\n[1]Log in"
-                + "\n[2]Skapa ny konto"
+        int choice = nextInt("\n[1] Log in"
+                + "\n[2] Skapa ny konto"
                 + "\n[3] Gå tillbaka");
 
         switch (choice) {
