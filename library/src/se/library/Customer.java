@@ -15,7 +15,7 @@ public class Customer {
     private String password;
     private String libraryCardNo;
     private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
-    private ArrayList<String> newBorrower = new ArrayList<>();
+    private ArrayList<CustomerContainer> newBorrower = new ArrayList<>();
 
     //private ArrayList<Book> reservedBooks = new ArrayList<Book>();
     public Customer(){
@@ -28,10 +28,7 @@ public class Customer {
         this.password = password;
         this.libraryCardNo = libraryCardNo;
     }
-    public void addNewBorrower(String personalNo){
-        this.personalNo = personalNo;
-        newBorrower.add(personalNo);
-    }
+
     public String getName() {
         return name;
     }

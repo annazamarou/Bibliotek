@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
+    CustomerContainer newUser = new CustomerContainer();
 
     //Tvingar användaren att skriva in ett nummer och return nummret som användaren har skrivit in
     public int nextInt(String description) {
@@ -133,22 +134,29 @@ public class Menu {
                 LogIn inloggning = new LogIn();
                 inloggning.Test(personnummer);
 
+                if (personnummer.length() == 8){
+                    user();
+                }
                 while (personnummer.length() != 8) {
 
                     System.out.println("Ange din personnummer YYYYMMDD");
                     personnummer = sc.nextLine();
-                    if (personnummer.length() < 8) {
-                        System.out.println("Du har inte matat in ditt fullständiga personnummer.");
+                    if (personnummer.length() == 8) {
+                        user();
+                        break;
                     } else if (personnummer.length() > 8) {
                         System.out.println("Du har matat in ditt personnummer i fel format.");
-                    } else   {
-                        user();
-                    } 
+                    } else if (personnummer.length() < 7) {
+                        System.out.println("Du har inte matat in ditt fullständiga personnummer.");
+                    } else {
+                        break;
+                    }
                 }
 
                 break;
             case 2:
-                Customer newUser = new Customer();
+
+                Customer newUserC = new Customer();
                 System.out.print("Name: ");
                 String name = sc.nextLine();
                 System.out.print("Personnummer: ");
@@ -157,7 +165,7 @@ public class Menu {
                 String email = sc.nextLine();
                 System.out.print("Password: ");
                 String password = sc.nextLine();
-                newUser.addNewBorrower(name + personalNo + email + password);
+                newUser.addCustomerToLibrary(newUserC);
                 displayMenu();
                 sc.close();
                 break;
@@ -172,6 +180,7 @@ public class Menu {
     }
 
     public void user() {
+        System.out.println("ajm usor");
         int choice = nextInt("\n[1] Mina sida"
                 + "\n[2] Visa Boklista"
                 + "\n[3] Logga ut");

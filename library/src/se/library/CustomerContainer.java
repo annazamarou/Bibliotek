@@ -32,6 +32,10 @@ public class CustomerContainer {
 
     }
 
+    public CustomerContainer(ArrayList<Customer> newBorrower) {
+        this.customerList = newBorrower;
+    }
+
     public void addCustomerToLibrary(Customer customerToAdd) {
         customerList.add(customerToAdd);
         nextLibraryCardNumber += 1;
@@ -88,4 +92,5 @@ public class CustomerContainer {
 
         return stringToReturn;
     }
+    
 }
