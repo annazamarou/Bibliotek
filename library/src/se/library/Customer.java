@@ -15,7 +15,7 @@ public class Customer {
     private String password;
     private String libraryCardNo;
     private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
-    private ArrayList<CustomerContainer> newBorrower = new ArrayList<>();
+
 
     //private ArrayList<Book> reservedBooks = new ArrayList<Book>();
     public Customer() {
