@@ -129,31 +129,11 @@ public class Menu {
 
         switch (choice) {
             case 1:
-                System.out.println("Ange din personnummer YYYYMMDD");
-                String personnummer = sc.nextLine();
-                LogIn inloggning = new LogIn();
-                inloggning.Test(personnummer);
-
-                if (personnummer.length() == 8){
-                    user();
+                LogIn login = new LogIn();
+                while (true) {
+                login.newUser("");
                 }
-                while (personnummer.length() != 8) {
-
-                    System.out.println("Ange din personnummer YYYYMMDD");
-                    personnummer = sc.nextLine();
-                    if (personnummer.length() == 8) {
-                        user();
-                        break;
-                    } else if (personnummer.length() > 8) {
-                        System.out.println("Du har matat in ditt personnummer i fel format.");
-                    } else if (personnummer.length() < 7) {
-                        System.out.println("Du har inte matat in ditt fullständiga personnummer.");
-                    } else {
-                        break;
-                    }
-                }
-
-                break;
+                
             case 2:
 
                 Customer newUserC = new Customer();
@@ -180,7 +160,6 @@ public class Menu {
     }
 
     public void user() {
-        System.out.println("ajm usor");
         int choice = nextInt("\n[1] Mina sida"
                 + "\n[2] Visa Boklista"
                 + "\n[3] Logga ut");
