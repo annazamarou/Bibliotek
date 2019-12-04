@@ -131,8 +131,9 @@ public class Menu {
             case 1:
                 System.out.println("Ange din personnummer");
                 String personnummer = sc.nextLine();
-                LogIn inloggning= new LogIn();
+                LogIn inloggning = new LogIn();
                 inloggning.Test(personnummer);
+                user();
                 break;
             case 2:
                 Admin newUser = new Admin();
@@ -159,6 +160,7 @@ public class Menu {
                 break;
             case 2:
                 BookList.listAllBooks();
+                user();
                 break;
             case 3:
                 userChoice();
@@ -176,10 +178,10 @@ public class Menu {
     
         switch(choice){
             case 1:
-                //hentera reservation
+                //hantera reservation
                 break;
             case 2:
-                //lämna tillbacka
+                //lämna tillbaka
                 break;
             case 3:
                 user();
