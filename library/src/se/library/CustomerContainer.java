@@ -84,7 +84,7 @@ public class CustomerContainer {
         if (doesCustomerExist(libraryCardNumber)) {
             for (Customer customer : customerList) {
                 if (customer.getLibraryCardNo().equals(libraryCardNumber) && isPassordCorrect(customer, password)) {
-                    System.out.println("Login Success");
+                    System.out.println("Inloggningen lyckades...");
                     return customer;
                 }
             }
