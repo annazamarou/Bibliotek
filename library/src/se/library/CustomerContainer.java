@@ -89,8 +89,6 @@ public class CustomerContainer {
                 }
             }
         }
-
-        System.out.println("I'm Sorry but you either entered wrong password or librarycard number");
         return null;
     }
 
@@ -99,7 +97,7 @@ public class CustomerContainer {
             return true;
         }
 
-        System.out.println("Wrong password");
+        System.out.println("Fel lösenord");
         return false;
     }
 
