@@ -14,7 +14,14 @@ public class Main {
         
         Menu menu = new Menu();
         menu.displayMenu();
-    	
+
+
+
+//        CustomerContainer serverOfCustomers = new CustomerContainer();
+//        Customer newCustomer = new Customer("ABCDE", "ABCDE", "ABCDE", "ABCDE", "3");
+//        serverOfCustomers.addCustomerToLibrary(newCustomer);
+//        serverOfCustomers.removeCustomerFromLibrary("2");
+//        System.out.println(serverOfCustomers.toString());
     	}
     	
     }
