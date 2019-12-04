@@ -129,7 +129,8 @@ public class Menu {
                 String password = sc.nextLine();
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
-                System.out.println("Bibliotekskortnummer är " + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
+                System.out.println("Bibliotekskortnummer är " +
+                        newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
                 break;
             case 2:
                 System.out.println("Ange kundens bibliotekskortsnummer som du vill ta bort: ");
@@ -158,7 +159,10 @@ public class Menu {
                 customerThisSession = customerContainer.login(libraryCardNumber, loginPassword);
                 if (customerThisSession != null) {
                     System.out.println("Välkommen tillbaka " + customerThisSession.getName());
+                    user();
                 }
+
+                
 
                 break;
             case 2:
@@ -172,8 +176,7 @@ public class Menu {
                 String password = sc.nextLine();
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
-                System.out.println("Tack för att du använder Biblioteket, det är nästan ingen som gör det längre :( \n" +
-                        "Ditt Bibliotekskortnummer är " + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
+                System.out.println("Ditt bibliotekskortnummer är " + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen" + '\n');
                 break;
             case 3:
                 displayMenu();
