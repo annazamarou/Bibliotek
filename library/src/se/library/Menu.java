@@ -33,7 +33,7 @@ public class Menu {
             try {
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException nFE) {
-                System.out.println("Mata in endast in siffror");
+                System.out.println("Mata endast in siffror");
                 //
             }
         }
@@ -41,7 +41,8 @@ public class Menu {
 
     public void displayMenu() {
         while (true) {
-            System.out.println("Välkommen till Bibliotek!");
+            System.out.println("Välkommen till Biblioteket!");
+            System.out.println("Gör ett av följande val..");
             int choice = nextInt("\n[1] Bibliotekarie"
                     + "\n[2] Låntagare"
                     + "\n[3] Lista Böcker"
@@ -71,7 +72,7 @@ public class Menu {
 
     public void librarian() {
         int choice = nextInt("\n[1] Hantera böcker"
-                + "\n[2] Hantera kundiformation"
+                + "\n[2] Hantera kundinformation"
                 + "\n[3] Gå tillbaka");
 
         switch (choice) {
@@ -113,7 +114,7 @@ public class Menu {
 
     public void userHandling() {
         int choice = nextInt("\n[1] Lägg till kund"
-                + "\n[2] Ändra/tar bort  användaren"
+                + "\n[2] Ändra/ta bort en kund"
                 + "\n[3] Gå tillbaka");
 
         switch (choice) {
@@ -128,10 +129,10 @@ public class Menu {
                 String password = sc.nextLine();
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
-                System.out.println("Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
+                System.out.println("Bibliotekskortnummer är " + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
                 break;
             case 2:
-                System.out.println("Ange kunden du vill ta borts Bibliotekskortsnummer: ");
+                System.out.println("Ange kundens bibliotekskortsnummer som du vill ta bort: ");
                 customerContainer.removeCustomerFromLibrary(sc.nextLine());
                 break;
             case 3:
@@ -145,14 +146,14 @@ public class Menu {
 
     public int userChoice() {
         int choice = nextInt("\n[1] Log in"
-                + "\n[2] Skapa ny konto"
+                + "\n[2] Skapa nytt konto"
                 + "\n[3] Gå tillbaka");
 
         switch (choice) {
             case 1:
-                System.out.println("Ange din bibliotskortsnummer:");
+                System.out.println("Ange ditt bibliotskortsnummer:");
                 String libraryCardNumber = sc.nextLine();
-                System.out.println("Ange din kod: ");
+                System.out.println("Ange ditt lösenord: ");
                 String loginPassword = sc.nextLine();
                 customerThisSession = customerContainer.login(libraryCardNumber, loginPassword);
                 if (customerThisSession != null) {
