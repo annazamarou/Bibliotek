@@ -20,7 +20,9 @@ public class LogIn {
         personalNo = sc.nextLine();
 
         if (personalNo.length() == 8) {
+            System.out.println("Inloggning lyckad..");
             menu.user();
+
         } else {
             System.out.println("Du har matat in ditt personnummer i fel format.");
             return false;

@@ -134,6 +134,7 @@ public class Menu {
                 login.newUser("");
                 }
                 
+                
             case 2:
 
                 Customer newUserC = new Customer();
