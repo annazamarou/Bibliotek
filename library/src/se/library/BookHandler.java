@@ -3,7 +3,6 @@ package se.library;
 import java.util.ArrayList;
 
 /**
- *
  * @author Stefan
  */
 public class BookHandler {

@@ -3,21 +3,19 @@ package se.library;
 import java.util.ArrayList;
 
 /**
- *
  * @author Consultant Johan Lind.
  * 49 hours - hourly rate $200 - total 9 800USD.
- *
  */
 public class CustomerContainer {
 
-    ArrayList <Customer> customerList = new ArrayList<>();
+    ArrayList<Customer> customerList = new ArrayList<>();
     int nextLibraryCardNumber;
 
-        public CustomerContainer() {
-            nextLibraryCardNumber = 1;
-            readInCustomers();
+    public CustomerContainer() {
+        nextLibraryCardNumber = 1;
+        readInCustomers();
 
-        }
+    }
 
     private void readInCustomers() {
         Customer tempCustomer = new Customer("Kalle Svensson", "471130-4425", "kalle@svensson.se", "password123", "" + nextLibraryCardNumber);
@@ -39,29 +37,29 @@ public class CustomerContainer {
     }
 
     public boolean removeCustomerFromLibrary(String customerLibraryCard) {
-            if(doesCustomerExist(customerLibraryCard)) {
-                for (Customer customer : customerList) {
-                    if(customer.getLibraryCardNo().equals(customerLibraryCard)) {
-                        customerList.remove(customer);
-                        System.out.println("Kund: " + customer.getName() + " är borttagen ur systemet");
-                        return true;
-                    }
+        if (doesCustomerExist(customerLibraryCard)) {
+            for (Customer customer : customerList) {
+                if (customer.getLibraryCardNo().equals(customerLibraryCard)) {
+                    customerList.remove(customer);
+                    System.out.println("Kund: " + customer.getName() + " är borttagen ur systemet");
+                    return true;
                 }
             }
+        }
 
-            System.out.println("Bibliotekskortsnumret finns inte, kunden togs inte bort!");
-            return false;
+        System.out.println("Bibliotekskortsnumret finns inte, kunden togs inte bort!");
+        return false;
 
     }
 
     private boolean doesCustomerExist(String libraryCardNumberToRemove) {
-            for(Customer customer:customerList) {
-                if(customer.getLibraryCardNo().equals(libraryCardNumberToRemove)) {
-                    return true;
-                }
+        for (Customer customer : customerList) {
+            if (customer.getLibraryCardNo().equals(libraryCardNumberToRemove)) {
+                return true;
             }
+        }
 
-            return false;
+        return false;
     }
 
     private Customer getCustomerDeepCopyOf(Customer tempCustomer) {

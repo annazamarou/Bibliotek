@@ -18,9 +18,9 @@ public class Customer {
     private ArrayList<String> newBorrower = new ArrayList<>();
 
     //private ArrayList<Book> reservedBooks = new ArrayList<Book>();
-    public Customer(){
+    public Customer() {
     }
-    
+
     public Customer(String name, String personalNo, String email, String password, String libraryCardNo) {
         this.name = name;
         this.personalNo = personalNo;
@@ -28,10 +28,12 @@ public class Customer {
         this.password = password;
         this.libraryCardNo = libraryCardNo;
     }
-    public void addNewBorrower(String personalNo){
+
+    public void addNewBorrower(String personalNo) {
         this.personalNo = personalNo;
         newBorrower.add(personalNo);
     }
+
     public String getName() {
         return name;
     }

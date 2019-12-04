@@ -8,7 +8,6 @@ package se.library;
 import java.util.Scanner;
 
 /**
- *
  * @author nikos
  */
 
@@ -40,41 +39,41 @@ public class Menu {
             }
         }
     }
-    
-    public void displayMenu(){
-        while(true){
-        System.out.println("Välkommen till Bibliotek!");
-        int choice = nextInt("\n[1] Bibliotekarie"
-                + "\n[2] Låntagare"
-                + "\n[3] Lista Böcker"
-                + "\n[4] Avsluta");
-    
-        switch(choice){
-            case 1:
-                librarian();
-                break;
-            case 2:
-                userChoice();
-                break;
-            case 3:
-                bookHandler.listAllBooks();
-                break;
-            case 4:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Du har angivit fel nummer. Försök igen!");
-                break;
+
+    public void displayMenu() {
+        while (true) {
+            System.out.println("Välkommen till Bibliotek!");
+            int choice = nextInt("\n[1] Bibliotekarie"
+                    + "\n[2] Låntagare"
+                    + "\n[3] Lista Böcker"
+                    + "\n[4] Avsluta");
+
+            switch (choice) {
+                case 1:
+                    librarian();
+                    break;
+                case 2:
+                    userChoice();
+                    break;
+                case 3:
+                    bookHandler.listAllBooks();
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Du har angivit fel nummer. Försök igen!");
+                    break;
+            }
         }
-        }
-    }  
-    
-    public void librarian(){
+    }
+
+    public void librarian() {
         int choice = nextInt("\n[1] Hantera böcker"
                 + "\n[2] Hantera kundiformation"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 bookHandling();
                 break;
@@ -88,14 +87,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-    public void bookHandling(){
+    }
+
+    public void bookHandling() {
         int choice = nextInt("\n[1] Lägg till böcker"
                 + "\n[2] Tar bort böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 bookHandler.addBook(admin.addBook());
                 break;
@@ -109,14 +108,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-     public void userHandling(){
+    }
+
+    public void userHandling() {
         int choice = nextInt("\n[1] Lägg till kund"
                 + "\n[2] Ändra/tar bort  användaren"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 System.out.println("Kund Namn: ");
                 String name = sc.nextLine();
@@ -141,14 +140,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-    public int userChoice(){
+    }
+
+    public int userChoice() {
         int choice = nextInt("\n[1]Log in"
                 + "\n[2]Skapa ny konto"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
 
                 System.out.println("Ange din bibliotskortsnummer:");
@@ -156,7 +155,7 @@ public class Menu {
                 System.out.println("Ange din kod: ");
                 String loginPassword = sc.nextLine();
                 customerThisSession = customerContainer.login(libraryCardNumber, loginPassword);
-                if(customerThisSession != null) {
+                if (customerThisSession != null) {
                     System.out.println("Välkommen tillbaka " + customerThisSession.getName());
                 }
 
@@ -183,14 +182,14 @@ public class Menu {
                 break;
         }
         return choice;
-    }  
+    }
 
-    public void user(){
+    public void user() {
         int choice = nextInt("\n[1] Mina sida"
                 + "\n[2] Visa Boklista"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 myPage();
                 break;
@@ -205,14 +204,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-     public void myPage(){
+    }
+
+    public void myPage() {
         int choice = nextInt("\n[1] Hantera reserverade böcker"
                 + "\n[2] Återlämna lånade böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 //hantera reservation
                 break;
@@ -226,8 +225,8 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
+    }
+
 }
 
 

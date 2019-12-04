@@ -6,7 +6,6 @@
 package se.library;
 
 
-
 public class Book {
     private String title;
     private String author;
@@ -21,12 +20,14 @@ public class Book {
         this.isAvailable = isAvailable;
         this.isAgeRestricted = isAgeRestricted;
     }
-    public Book(String title, String author){
+
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
     }
-    public Book(){
-        
+
+    public Book() {
+
     }
 
     public void setTitle(String title) {
@@ -44,7 +45,7 @@ public class Book {
     public void setIsAgeRestricted(boolean isAgeRestricted) {
         this.isAgeRestricted = isAgeRestricted;
     }
-    
+
 
     public String getTitle() {
         return title;
@@ -65,7 +66,7 @@ public class Book {
     @Override
     public String toString() {
         return "Titel: " + title + '\n' +
-               "Författare: " + author + '\n' + 
+                "Författare: " + author + '\n' +
                 "I bibliotek: " + "" + isAvailable +
                 " Åldersgräns: " + "" + isAgeRestricted + '\n' +
                 "_______________________________________";
