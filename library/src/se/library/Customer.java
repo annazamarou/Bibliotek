@@ -18,9 +18,9 @@ public class Customer {
     private ArrayList<CustomerContainer> newBorrower = new ArrayList<>();
 
     //private ArrayList<Book> reservedBooks = new ArrayList<Book>();
-    public Customer(){
+    public Customer() {
     }
-    
+
     public Customer(String name, String personalNo, String email, String password, String libraryCardNo) {
         this.name = name;
         this.personalNo = personalNo;
@@ -47,6 +47,10 @@ public class Customer {
 
     public String getLibraryCardNo() {
         return libraryCardNo;
+    }
+
+    public void setLibraryCardNo(String libraryCardNo) {
+        this.libraryCardNo = libraryCardNo;
     }
 
     public ArrayList<Book> getBorrowedBooks() {
