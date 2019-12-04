@@ -7,7 +7,7 @@ public class CustomerList {
 private ArrayList <Customer> customers=new ArrayList<Customer>();
 
 public void addOriginalCustomers() {
-	Customer customer1=new Customer("Arne Arnesson", "6505055555", "arne@arnesson.com", 
+	Customer customer1=new Customer("Arne Arnesson", "650505", "arne@arnesson.com", 
 			"abcdef","1");
 	customers.add(customer1);
 }
