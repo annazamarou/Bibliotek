@@ -122,7 +122,7 @@ public class Menu {
         }
     }  
      
-    public void userChoice(){
+    public int userChoice(){
         int choice = nextInt("\n[1]Log in"
                 + "\n[2]Skapa ny konto"
                 + "\n[3] Gå tillbaka");
@@ -136,8 +136,16 @@ public class Menu {
                 user();
                 break;
             case 2:
-                Admin newUser = new Admin();
-                newUser.addBorrower(sc.nextLine());
+                Customer newUser = new Customer("name", "personalNo", "email", "password", "libraryCardNo");
+                System.out.println("Name: ");
+                String name = sc.nextLine();
+                System.out.println("Personnummer: ");
+                String personalNo = sc.nextLine();
+                System.out.println("Email: ");
+                String email = sc.nextLine();
+                System.out.println("Password: ");
+                String password = sc.nextLine();     
+                newUser.addNewBorrower(sc.nextLine());
                 sc.close();
                 break;
             case 3:
@@ -147,6 +155,7 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
+        return choice;
     }  
 
     public void user(){

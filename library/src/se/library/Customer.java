@@ -15,9 +15,12 @@ public class Customer {
     private String password;
     private String libraryCardNo;
     private ArrayList<Book> borrowedBooks = new ArrayList<Book>();
+    private ArrayList<String> newBorrower = new ArrayList<>();
 
     //private ArrayList<Book> reservedBooks = new ArrayList<Book>();
-
+    public Customer(){
+    }
+    
     public Customer(String name, String personalNo, String email, String password, String libraryCardNo) {
         this.name = name;
         this.personalNo = personalNo;
@@ -25,7 +28,10 @@ public class Customer {
         this.password = password;
         this.libraryCardNo = libraryCardNo;
     }
-
+    public void addNewBorrower(String personalNo){
+        this.personalNo = personalNo;
+        newBorrower.add(personalNo);
+    }
     public String getName() {
         return name;
     }
@@ -59,8 +65,7 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", libraryCardNo='" + libraryCardNo + '\'' +
-                ", borrowedBooks=" + borrowedBooks +
-                '}';
+                ", borrowedBooks=" + borrowedBooks;
     }
 
     public boolean isOver18(String personalNo) {
