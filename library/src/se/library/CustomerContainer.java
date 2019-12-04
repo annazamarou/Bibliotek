@@ -36,10 +36,10 @@ public class CustomerContainer {
         nextLibraryCardNumber += 1;
     }
 
-    public boolean removeCustomerFromLibrary(String customerLibraryCard) {
-        if (doesCustomerExist(customerLibraryCard)) {
+    public boolean removeCustomerFromLibrary(String personalNumber) {
+        if (doesCustomerExist(personalNumber)) {
             for (Customer customer : customerList) {
-                if (customer.getLibraryCardNo().equals(customerLibraryCard)) {
+                if (customer.getPersonalNo().equals(personalNumber)) {
                     customerList.remove(customer);
                     System.out.println("Kund: " + customer.getName() + " är borttagen ur systemet");
                     return true;
@@ -47,14 +47,14 @@ public class CustomerContainer {
             }
         }
 
-        System.out.println("Bibliotekskortsnumret finns inte, kunden togs inte bort!");
+        System.out.println("Personnumret finns inte, kunden togs inte bort!");
         return false;
 
     }
 
-    private boolean doesCustomerExist(String libraryCardNumberToRemove) {
+    private boolean doesCustomerExist(String libraryCardNumber) {
         for (Customer customer : customerList) {
-            if (customer.getLibraryCardNo().equals(libraryCardNumberToRemove)) {
+            if (customer.getLibraryCardNo().equals(libraryCardNumber)) {
                 return true;
             }
         }
@@ -80,6 +80,7 @@ public class CustomerContainer {
         if (doesCustomerExist(libraryCardNumber)) {
             for (Customer customer : customerList) {
                 if (customer.getLibraryCardNo().equals(libraryCardNumber) && isPassordCorrect(customer, password)) {
+
                     System.out.println("Login Success");
                     return customer;
                 }

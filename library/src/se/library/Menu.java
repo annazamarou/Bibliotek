@@ -130,7 +130,7 @@ public class Menu {
                 System.out.println("Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
                 break;
             case 2:
-                System.out.println("Ange kunden du vill ta borts Bibliotekskortsnummer: ");
+                System.out.println("Ange kunden du vill ta borts personnummer: ");
                 customerContainer.removeCustomerFromLibrary(sc.nextLine());
                 break;
             case 3:
@@ -158,7 +158,6 @@ public class Menu {
                 if (customerThisSession != null) {
                     System.out.println("Välkommen tillbaka " + customerThisSession.getName());
                 }
-
                 break;
             case 2:
                 System.out.println("Name: ");
