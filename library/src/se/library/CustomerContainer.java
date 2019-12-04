@@ -37,7 +37,6 @@ public class CustomerContainer {
     }
 
     public boolean removeCustomerFromLibrary(String personalNumber) {
-        if (doesCustomerExist(personalNumber)) {
             for (Customer customer : customerList) {
                 if (customer.getPersonalNo().equals(personalNumber)) {
                     customerList.remove(customer);
@@ -45,8 +44,6 @@ public class CustomerContainer {
                     return true;
                 }
             }
-        }
-
         System.out.println("Personnumret finns inte, kunden togs inte bort!");
         return false;
 
