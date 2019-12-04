@@ -173,7 +173,7 @@ public class Menu {
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
                 System.out.println("Tack för att du använder Biblioteket, det är nästan ingen som gör det längre :( \n" +
-                        "Ditt Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
+                        "Ditt Bibliotekskortnummer är " + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
                 break;
             case 3:
                 displayMenu();
