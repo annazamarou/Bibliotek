@@ -24,6 +24,7 @@ public class Menu {
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException nFE) {
                 System.out.println("Mata in endast in siffror");
+                //
             }
         }
     }
