@@ -11,11 +11,10 @@ import java.util.Scanner;
  *
  * @author nikos
  */
-
 public class Menu {
 
     Scanner sc = new Scanner(System.in);
-    
+
     //Tvingar användaren att skriva in ett nummer och return nummret som användaren har skrivit in
     public int nextInt(String description) {
         while (true) {
@@ -27,37 +26,37 @@ public class Menu {
             }
         }
     }
-    
-    public void displayMenu(){
-        while(true){
-        System.out.println("Välkommen till Bibliotek!");
-        int choice = nextInt("\n[1] Bibliotekarie"
-                + "\n[2] Låntagare"
-                + "\n[3] Avsluta");
-    
-        switch(choice){
-            case 1:
-                librarian();
-                break;
-            case 2:
-                userChoice();
-                break;
-            case 3:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Du har angivit fel nummer. Försök igen!");
-                break;
+
+    public void displayMenu() {
+        while (true) {
+            System.out.println("Välkommen till Bibliotek!");
+            int choice = nextInt("\n[1] Bibliotekarie"
+                    + "\n[2] Låntagare"
+                    + "\n[3] Avsluta");
+
+            switch (choice) {
+                case 1:
+                    librarian();
+                    break;
+                case 2:
+                    userChoice();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Du har angivit fel nummer. Försök igen!");
+                    break;
+            }
         }
-        }
-    }  
-    
-    public void librarian(){
+    }
+
+    public void librarian() {
         int choice = nextInt("\n[1] Hantera böcker"
                 + "\n[2] Hantera kundiformation"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 bookHandling();
                 break;
@@ -71,16 +70,16 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-    public void bookHandling(){
+    }
+
+    public void bookHandling() {
         int choice = nextInt("\n[1] Lägg till böcker"
                 + "\n[2] Tar bort böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
-                Admin addBook= new Admin();
+                Admin addBook = new Admin();
                 addBook.addBook();
                 break;
             case 2:
@@ -95,14 +94,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-     public void userHandling(){
+    }
+
+    public void userHandling() {
         int choice = nextInt("\n[1] Lägg till kund"
                 + "\n[2] Ändra/tar bort  användaren"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 Admin newUser = new Admin();
                 newUser.addBorrower(sc.nextLine());
@@ -120,32 +119,46 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-    public int userChoice(){
-        int choice = nextInt("\n[1]Log in"
-                + "\n[2]Skapa ny konto"
+    }
+
+    public int userChoice() {
+        int choice = nextInt("\n[1] Log in"
+                + "\n[2] Skapa ny konto"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
-                System.out.println("Ange din personnummer");
+                System.out.println("Ange din personnummer YYYYMMDD");
                 String personnummer = sc.nextLine();
                 LogIn inloggning = new LogIn();
                 inloggning.Test(personnummer);
-                user();
+
+                while (personnummer.length() != 8) {
+
+                    System.out.println("Ange din personnummer YYYYMMDD");
+                    personnummer = sc.nextLine();
+                    if (personnummer.length() < 8) {
+                        System.out.println("Du har inte matat in ditt fullständiga personnummer.");
+                    } else if (personnummer.length() > 8) {
+                        System.out.println("Du har matat in ditt personnummer i fel format.");
+                    } else   {
+                        user();
+                    } 
+                }
+
                 break;
             case 2:
-                Customer newUser = new Customer("name", "personalNo", "email", "password", "libraryCardNo");
-                System.out.println("Name: ");
+                Customer newUser = new Customer();
+                System.out.print("Name: ");
                 String name = sc.nextLine();
-                System.out.println("Personnummer: ");
+                System.out.print("Personnummer: ");
                 String personalNo = sc.nextLine();
-                System.out.println("Email: ");
+                System.out.print("Email: ");
                 String email = sc.nextLine();
-                System.out.println("Password: ");
-                String password = sc.nextLine();     
-                newUser.addNewBorrower(sc.nextLine());
+                System.out.print("Password: ");
+                String password = sc.nextLine();
+                newUser.addNewBorrower(name + personalNo + email + password);
+                displayMenu();
                 sc.close();
                 break;
             case 3:
@@ -156,14 +169,14 @@ public class Menu {
                 break;
         }
         return choice;
-    }  
+    }
 
-    public void user(){
+    public void user() {
         int choice = nextInt("\n[1] Mina sida"
                 + "\n[2] Visa Boklista"
-                + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+                + "\n[3] Logga ut");
+
+        switch (choice) {
             case 1:
                 myPage();
                 break;
@@ -178,14 +191,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-     public void myPage(){
+    }
+
+    public void myPage() {
         int choice = nextInt("\n[1] Hantera reserverade böcker"
                 + "\n[2] Återlämna lånade böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 //hantera reservation
                 break;
@@ -199,9 +212,6 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
+    }
+
 }
-
-
-
