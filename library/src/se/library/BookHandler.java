@@ -11,14 +11,15 @@ public class BookHandler {
     private final ArrayList<Book> books;
 
     public BookHandler() {
+
         books = new ArrayList<>();
+        listOfBooks();
     }
 
-    public static void listAllBooks() {
-        BookHandler bl = new BookHandler();
-        bl.listOfBooks();
-        for (Book b : bl.books) {
-            System.out.println(b);
+    public void listAllBooks() {
+
+        for (Book b : books) {
+            System.out.println(b.toString());
         }
     }
 
@@ -36,5 +37,21 @@ public class BookHandler {
         books.add(jsfs);
         Book got = new Book("A Game of Thrones", "George R.R. Martin", true, true);
         books.add(got);
+
+
+        Book testbok = new Book("Testbok", "George R.R. Martin", true, true);
+        books.add(testbok);
+    }
+
+    public void addBook(Book bookToAdd) {
+        books.add(bookToAdd);
+    }
+
+    public void removeBook(Book bookToRemove) {
+        books.remove(bookToRemove);
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
     }
 }

@@ -14,14 +14,18 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Scanner sc;
-    Customer customerThisSession;
-    CustomerContainer customerContainer;
+    private Scanner sc;
+    private Customer customerThisSession;
+    private CustomerContainer customerContainer;
+    private BookHandler bookHandler;
+    private Admin admin;
 
     public Menu() {
         this.sc = new Scanner(System.in);
         this.customerThisSession = new Customer();
         customerContainer = new CustomerContainer();
+        bookHandler = new BookHandler();
+        admin = new Admin();
     }
 
     //Tvingar användaren att skriva in ett nummer och return nummret som användaren har skrivit in
@@ -42,7 +46,8 @@ public class Menu {
         System.out.println("Välkommen till Bibliotek!");
         int choice = nextInt("\n[1] Bibliotekarie"
                 + "\n[2] Låntagare"
-                + "\n[3] Avsluta");
+                + "\n[3] Lista Böcker"
+                + "\n[4] Avsluta");
     
         switch(choice){
             case 1:
@@ -52,6 +57,9 @@ public class Menu {
                 userChoice();
                 break;
             case 3:
+                bookHandler.listAllBooks();
+                break;
+            case 4:
                 System.exit(0);
                 break;
             default:
@@ -89,13 +97,10 @@ public class Menu {
     
         switch(choice){
             case 1:
-                Admin addBook= new Admin();
-                addBook.addBook();
+                bookHandler.addBook(admin.addBook());
                 break;
             case 2:
-                Admin removeBook = new Admin();
-                removeBook.removeBook(sc.nextInt());
-                sc.close();
+                bookHandler.removeBook(admin.removeBook(bookHandler));
                 break;
             case 3:
                 librarian();
@@ -113,14 +118,21 @@ public class Menu {
     
         switch(choice){
             case 1:
-                Admin newUser = new Admin();
-                newUser.addBorrower(sc.nextLine());
-                sc.close();
+                System.out.println("Kund Namn: ");
+                String name = sc.nextLine();
+                System.out.println("Kund Personnummer: ");
+                String personalNo = sc.nextLine();
+                System.out.println("Kund Email: ");
+                String email = sc.nextLine();
+                System.out.println("Kund Password: ");
+                String password = sc.nextLine();
+                Customer newUser = new Customer(name, personalNo, email, password, "");
+                customerContainer.addCustomerToLibrary(newUser);
+                System.out.println("Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
                 break;
             case 2:
-                Admin removeUser = new Admin();
-                removeUser.removeBorrower(sc.nextInt());
-                sc.close();
+                System.out.println("Ange kunden du vill ta borts Bibliotekskortsnummer: ");
+                customerContainer.removeCustomerFromLibrary(sc.nextLine());
                 break;
             case 3:
                 librarian();
@@ -160,7 +172,6 @@ public class Menu {
                 String password = sc.nextLine();
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
-                System.out.println(customerContainer.toString());
                 System.out.println("Tack för att du använder Biblioteket, det är nästan ingen som gör det längre :( \n" +
                         "Ditt Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
                 break;
@@ -184,7 +195,7 @@ public class Menu {
                 myPage();
                 break;
             case 2:
-                BookHandler.listAllBooks();
+                bookHandler.listAllBooks();
                 user();
                 break;
             case 3:

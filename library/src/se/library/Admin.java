@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Admin {
     private ArrayList<String> borrowerList = new ArrayList<String>();
     private ArrayList<Book> bookList = new ArrayList<Book>();
+    Scanner sc = new Scanner(System.in);
 
  
     public void printBookList(){
@@ -37,16 +38,15 @@ public class Admin {
         borrowerList.add(name);
     }
     
-    public void addBook(){
+    public Book addBook(){
    
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         System.out.print("Ange titeln: ");
         String t = sc.nextLine();
         System.out.print("Ange författern: ");
         String a = sc.nextLine();
-                
-        bookList.add(new Book(t,a));
-        
+
+        return new Book(t,a);
         
         
       //  bookList.add(new Book( title,author,isAvailable,isAgeRestricted));
@@ -56,7 +56,17 @@ public class Admin {
         borrowerList.remove(position-1);
     }
     
-    public void removeBook(int position){
-        bookList.remove(position-1);
+    public Book removeBook(BookHandler bookHandler){
+        System.out.print("Ange titeln: ");
+        String title = sc.nextLine();
+
+        for (Book book : bookHandler.getBooks()) {
+            if(book.getTitle().equals(title)){
+                return book;
+            }
+
+        }
+        System.out.println("Titeln du angav finns inte");
+        return null;
     }
 }

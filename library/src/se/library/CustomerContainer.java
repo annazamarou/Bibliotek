@@ -43,12 +43,13 @@ public class CustomerContainer {
                 for (Customer customer : customerList) {
                     if(customer.getLibraryCardNo().equals(customerLibraryCard)) {
                         customerList.remove(customer);
+                        System.out.println("Kund: " + customer.getName() + " är borttagen ur systemet");
                         return true;
                     }
                 }
             }
 
-            System.out.println("Customer does not exist");
+            System.out.println("Bibliotekskortsnumret finns inte, kunden togs inte bort!");
             return false;
 
     }
