@@ -14,8 +14,16 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Scanner sc = new Scanner(System.in);
-    
+    Scanner sc;
+    Customer customerThisSession;
+    CustomerContainer customerContainer;
+
+    public Menu() {
+        this.sc = new Scanner(System.in);
+        this.customerThisSession = new Customer();
+        customerContainer = new CustomerContainer();
+    }
+
     //Tvingar användaren att skriva in ett nummer och return nummret som användaren har skrivit in
     public int nextInt(String description) {
         while (true) {
@@ -130,14 +138,18 @@ public class Menu {
     
         switch(choice){
             case 1:
-                System.out.println("Ange din personnummer");
-                String personnummer = sc.nextLine();
-                LogIn inloggning = new LogIn();
-                inloggning.Test(personnummer);
-                user();
+
+                System.out.println("Ange din bibliotskortsnummer:");
+                String libraryCardNumber = sc.nextLine();
+                System.out.println("Ange din kod: ");
+                String loginPassword = sc.nextLine();
+                customerThisSession = customerContainer.login(libraryCardNumber, loginPassword);
+                if(customerThisSession != null) {
+                    System.out.println("Välkommen tillbaka " + customerThisSession.getName());
+                }
+
                 break;
             case 2:
-                Customer newUser = new Customer("name", "personalNo", "email", "password", "libraryCardNo");
                 System.out.println("Name: ");
                 String name = sc.nextLine();
                 System.out.println("Personnummer: ");
@@ -145,9 +157,12 @@ public class Menu {
                 System.out.println("Email: ");
                 String email = sc.nextLine();
                 System.out.println("Password: ");
-                String password = sc.nextLine();     
-                newUser.addNewBorrower(sc.nextLine());
-                sc.close();
+                String password = sc.nextLine();
+                Customer newUser = new Customer(name, personalNo, email, password, "");
+                customerContainer.addCustomerToLibrary(newUser);
+                System.out.println(customerContainer.toString());
+                System.out.println("Tack för att du använder Biblioteket, det är nästan ingen som gör det längre :( \n" +
+                        "Ditt Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
                 break;
             case 3:
                 displayMenu();
@@ -169,7 +184,7 @@ public class Menu {
                 myPage();
                 break;
             case 2:
-                BookList.listAllBooks();
+                BookHandler.listAllBooks();
                 user();
                 break;
             case 3:

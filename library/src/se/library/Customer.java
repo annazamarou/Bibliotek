@@ -52,6 +52,10 @@ public class Customer {
         return libraryCardNo;
     }
 
+    public void setLibraryCardNo(String libraryCardNo) {
+        this.libraryCardNo = libraryCardNo;
+    }
+
     public ArrayList<Book> getBorrowedBooks() {
         return borrowedBooks;
     }

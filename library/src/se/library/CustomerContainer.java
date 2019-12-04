@@ -33,6 +33,7 @@ public class CustomerContainer {
     }
 
     public void addCustomerToLibrary(Customer customerToAdd) {
+        customerToAdd.setLibraryCardNo("" + nextLibraryCardNumber);
         customerList.add(customerToAdd);
         nextLibraryCardNumber += 1;
     }
@@ -76,6 +77,37 @@ public class CustomerContainer {
         return deepCopy;
     }
 
+    public Customer login(String libraryCardNumber, String password) {
+        if (doesCustomerExist(libraryCardNumber)) {
+            for (Customer customer : customerList) {
+                if (customer.getLibraryCardNo().equals(libraryCardNumber) && isPassordCorrect(customer, password)) {
+                    System.out.println("Login Success");
+                    return customer;
+                }
+            }
+        }
+
+        System.out.println("I'm Sorry but you either entered wrong password or librarycard number");
+        return null;
+    }
+
+    private boolean isPassordCorrect(Customer customer, String password) {
+        if (customer.getPassword().equals(password)) {
+            return true;
+        }
+
+        System.out.println("Wrong password");
+        return false;
+    }
+
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public int getNextLibraryCardNumber() {
+        return nextLibraryCardNumber;
+    }
+
     @Override
     public String toString() {
 
@@ -88,4 +120,6 @@ public class CustomerContainer {
 
         return stringToReturn;
     }
+
+
 }

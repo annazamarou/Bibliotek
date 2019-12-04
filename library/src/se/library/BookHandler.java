@@ -6,16 +6,16 @@ import java.util.ArrayList;
  *
  * @author Stefan
  */
-public class BookList {
+public class BookHandler {
 
     private final ArrayList<Book> books;
 
-    public BookList() {
+    public BookHandler() {
         books = new ArrayList<>();
     }
 
     public static void listAllBooks() {
-        BookList bl = new BookList();
+        BookHandler bl = new BookHandler();
         bl.listOfBooks();
         for (Book b : bl.books) {
             System.out.println(b);
