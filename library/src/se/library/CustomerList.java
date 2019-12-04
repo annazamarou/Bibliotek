@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CustomerList {
 	
-private ArrayList <Customer> customers=new ArrayList<Customer>();
+private ArrayList <Customer> customers = new ArrayList<Customer>();
 
 public void addOriginalCustomers() {
 	Customer customer1=new Customer("Arne Arnesson", "650505", "arne@arnesson.com", 
