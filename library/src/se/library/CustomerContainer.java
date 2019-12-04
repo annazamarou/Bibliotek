@@ -18,12 +18,12 @@ public class CustomerContainer {
     }
 
     private void readInCustomers() {
-        Customer tempCustomer = new Customer("Kalle Svensson", "471130-4425", "kalle@svensson.se", "password123", "" + nextLibraryCardNumber);
+        Customer tempCustomer = new Customer("Erik", "471130-4425", "Erik@newton.se", "safepassword123", "" + nextLibraryCardNumber);
         getCustomerDeepCopyOf(tempCustomer);
         customerList.add(getCustomerDeepCopyOf(tempCustomer));
         nextLibraryCardNumber += 1;
 
-        tempCustomer = new Customer("Erik Andersson", "131030-4125", "Erik@andersson.se", "qwertysafepassword", "" + nextLibraryCardNumber);
+        tempCustomer = new Customer("David B", "131030-4125", "Davidb@newton.se", "qwertysafepassword", "" + nextLibraryCardNumber);
         getCustomerDeepCopyOf(tempCustomer);
         customerList.add(getCustomerDeepCopyOf(tempCustomer));
         nextLibraryCardNumber += 1;
