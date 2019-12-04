@@ -10,7 +10,7 @@ public class LogIn {
     private String personnummer ;
     private String lösenord ;
     public void Test( String personnummer){
-        personnummer = this.personnummer;
+        this.personnummer = personnummer;
      if ( this.personnummer.length() != 8)
          System.out.println("Fel inmatning!");
     }
