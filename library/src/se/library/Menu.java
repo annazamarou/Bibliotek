@@ -162,13 +162,13 @@ public class Menu {
 
                 break;
             case 2:
-                System.out.println("Name: ");
+                System.out.print("Name: ");
                 String name = sc.nextLine();
                 System.out.print("Personnummer: ");
                 String personalNo = sc.nextLine();
                 System.out.print("Email: ");
                 String email = sc.nextLine();
-                System.out.println("Password: ");
+                System.out.print("Password: ");
                 String password = sc.nextLine();
                 Customer newUser = new Customer(name, personalNo, email, password, "");
                 customerContainer.addCustomerToLibrary(newUser);
