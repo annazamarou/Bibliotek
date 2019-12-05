@@ -8,14 +8,25 @@ package se.library;
 import java.util.Scanner;
 
 /**
- *
  * @author nikos
  */
 
 public class Menu {
 
-    Scanner sc = new Scanner(System.in);
-    
+    private Scanner sc;
+    private Customer customerThisSession;
+    private CustomerContainer customerContainer;
+    private BookHandler bookHandler;
+    private Admin admin;
+
+    public Menu() {
+        this.sc = new Scanner(System.in);
+        this.customerThisSession = new Customer();
+        customerContainer = new CustomerContainer();
+        bookHandler = new BookHandler();
+        admin = new Admin();
+    }
+
     //Tvingar användaren att skriva in ett nummer och return nummret som användaren har skrivit in
     public int nextInt(String description) {
         while (true) {
@@ -24,40 +35,45 @@ public class Menu {
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException nFE) {
                 System.out.println("Mata in endast in siffror");
+                //
             }
         }
     }
-    
-    public void displayMenu(){
-        while(true){
-        System.out.println("Välkommen till Bibliotek!");
-        int choice = nextInt("\n[1] Bibliotekarie"
-                + "\n[2] Låntagare"
-                + "\n[3] Avsluta");
-    
-        switch(choice){
-            case 1:
-                librarian();
-                break;
-            case 2:
-                userChoice();
-                break;
-            case 3:
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Du har angivit fel nummer. Försök igen!");
-                break;
+
+    public void displayMenu() {
+        while (true) {
+            System.out.println("Välkommen till Bibliotek!");
+            int choice = nextInt("\n[1] Bibliotekarie"
+                    + "\n[2] Låntagare"
+                    + "\n[3] Lista Böcker"
+                    + "\n[4] Avsluta");
+
+            switch (choice) {
+                case 1:
+                    librarian();
+                    break;
+                case 2:
+                    userChoice();
+                    break;
+                case 3:
+                    bookHandler.listAllBooks();
+                    break;
+                case 4:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Du har angivit fel nummer. Försök igen!");
+                    break;
+            }
         }
-        }
-    }  
-    
-    public void librarian(){
+    }
+
+    public void librarian() {
         int choice = nextInt("\n[1] Hantera böcker"
                 + "\n[2] Hantera kundiformation"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 bookHandling();
                 break;
@@ -71,22 +87,19 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-    public void bookHandling(){
+    }
+
+    public void bookHandling() {
         int choice = nextInt("\n[1] Lägg till böcker"
                 + "\n[2] Tar bort böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
-                Admin addBook= new Admin();
-                addBook.addBook();
+                bookHandler.addBook(admin.addBook());
                 break;
             case 2:
-                Admin removeBook = new Admin();
-                removeBook.removeBook(sc.nextInt());
-                sc.close();
+                bookHandler.removeBook(admin.removeBook(bookHandler));
                 break;
             case 3:
                 librarian();
@@ -95,23 +108,30 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
-     public void userHandling(){
+    }
+
+    public void userHandling() {
         int choice = nextInt("\n[1] Lägg till kund"
                 + "\n[2] Ändra/tar bort  användaren"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
-                Admin newUser = new Admin();
-                newUser.addBorrower(sc.nextLine());
-                sc.close();
+                System.out.println("Kund Namn: ");
+                String name = sc.nextLine();
+                System.out.println("Kund Personnummer: ");
+                String personalNo = sc.nextLine();
+                System.out.println("Kund Email: ");
+                String email = sc.nextLine();
+                System.out.println("Kund Password: ");
+                String password = sc.nextLine();
+                Customer newUser = new Customer(name, personalNo, email, password, "");
+                customerContainer.addCustomerToLibrary(newUser);
+                System.out.println("Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som kund kommer att använda vid inloggningen");
                 break;
             case 2:
-                Admin removeUser = new Admin();
-                removeUser.removeBorrower(sc.nextInt());
-                sc.close();
+                System.out.println("Ange kunden du vill ta borts personnummer: ");
+                customerContainer.removeCustomerFromLibrary(sc.nextLine());
                 break;
             case 3:
                 librarian();
@@ -120,23 +140,26 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-    public int userChoice(){
-        int choice = nextInt("\n[1]Log in"
-                + "\n[2]Skapa ny konto"
+    }
+
+    public int userChoice() {
+        int choice = nextInt("\n[1] Log in"
+                + "\n[2] Skapa ny konto"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
-                System.out.println("Ange din personnummer");
-                String personnummer = sc.nextLine();
-                LogIn inloggning = new LogIn();
-                inloggning.Test(personnummer);
-                user();
+
+                System.out.println("Ange din bibliotskortsnummer:");
+                String libraryCardNumber = sc.nextLine();
+                System.out.println("Ange din kod: ");
+                String loginPassword = sc.nextLine();
+                customerThisSession = customerContainer.login(libraryCardNumber, loginPassword);
+                if (customerThisSession != null) {
+                    System.out.println("Välkommen tillbaka " + customerThisSession.getName());
+                }
                 break;
             case 2:
-                Customer newUser = new Customer("name", "personalNo", "email", "password", "libraryCardNo");
                 System.out.println("Name: ");
                 String name = sc.nextLine();
                 System.out.println("Personnummer: ");
@@ -144,9 +167,11 @@ public class Menu {
                 System.out.println("Email: ");
                 String email = sc.nextLine();
                 System.out.println("Password: ");
-                String password = sc.nextLine();     
-                newUser.addNewBorrower(sc.nextLine());
-                sc.close();
+                String password = sc.nextLine();
+                Customer newUser = new Customer(name, personalNo, email, password, "");
+                customerContainer.addCustomerToLibrary(newUser);
+                System.out.println("Tack för att du använder Biblioteket, det är nästan ingen som gör det längre :( \n" +
+                        "Ditt Bibliotekskortnummer är" + newUser.getLibraryCardNo() + " som du kommer att använda vid inloggningen");
                 break;
             case 3:
                 displayMenu();
@@ -156,19 +181,19 @@ public class Menu {
                 break;
         }
         return choice;
-    }  
+    }
 
-    public void user(){
+    public void user() {
         int choice = nextInt("\n[1] Mina sida"
                 + "\n[2] Visa Boklista"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 myPage();
                 break;
             case 2:
-                BookList.listAllBooks();
+                bookHandler.listAllBooks();
                 user();
                 break;
             case 3:
@@ -178,14 +203,14 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-     
-     public void myPage(){
+    }
+
+    public void myPage() {
         int choice = nextInt("\n[1] Hantera reserverade böcker"
                 + "\n[2] Återlämna lånade böcker"
                 + "\n[3] Gå tillbaka");
-    
-        switch(choice){
+
+        switch (choice) {
             case 1:
                 //hantera reservation
                 break;
@@ -199,8 +224,8 @@ public class Menu {
                 System.out.println("Du har angivit fel nummer. Försök igen!");
                 break;
         }
-    }  
-    
+    }
+
 }
 
 
