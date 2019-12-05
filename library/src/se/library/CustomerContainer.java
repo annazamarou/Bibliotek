@@ -30,6 +30,10 @@ public class CustomerContainer {
 
     }
 
+    public CustomerContainer(ArrayList<Customer> newBorrower) {
+        this.customerList = newBorrower;
+    }
+
     public void addCustomerToLibrary(Customer customerToAdd) {
         customerToAdd.setLibraryCardNo("" + nextLibraryCardNumber);
         customerList.add(customerToAdd);
@@ -77,14 +81,12 @@ public class CustomerContainer {
         if (doesCustomerExist(libraryCardNumber)) {
             for (Customer customer : customerList) {
                 if (customer.getLibraryCardNo().equals(libraryCardNumber) && isPassordCorrect(customer, password)) {
+                    System.out.println("Inloggningen lyckades...");
 
-                    System.out.println("Login Success");
                     return customer;
                 }
             }
         }
-
-        System.out.println("I'm Sorry but you either entered wrong password or librarycard number");
         return null;
     }
 
@@ -93,7 +95,7 @@ public class CustomerContainer {
             return true;
         }
 
-        System.out.println("Wrong password");
+        System.out.println("Fel lösenord");
         return false;
     }
 
@@ -117,6 +119,4 @@ public class CustomerContainer {
 
         return stringToReturn;
     }
-
-
 }
