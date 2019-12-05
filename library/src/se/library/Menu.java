@@ -160,10 +160,8 @@ public class Menu {
                 if (customerThisSession != null) {
                     System.out.println("Välkommen tillbaka " + customerThisSession.getName());
                     user();
-                }
-
-                
-
+                } else
+                    userChoice();
                 break;
             case 2:
                 System.out.print("Name: ");
