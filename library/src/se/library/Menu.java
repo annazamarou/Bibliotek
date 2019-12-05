@@ -119,10 +119,12 @@ public class Menu {
 
         switch (choice) {
             case 1:
+                Customer newCustomer = new Customer();
                 System.out.println("Kund Namn: ");
                 String name = sc.nextLine();
                 System.out.println("Kund Personnummer: ");
                 String personalNo = sc.nextLine();
+                newCustomer.isOver18(personalNo);
                 System.out.println("Kund Email: ");
                 String email = sc.nextLine();
                 System.out.println("Kund Password: ");
@@ -167,6 +169,7 @@ public class Menu {
                 System.out.print("Name: ");
                 String name = sc.nextLine();
                 System.out.print("Personnummer: ");
+                
                 String personalNo = sc.nextLine();
                 System.out.print("Email: ");
                 String email = sc.nextLine();

@@ -70,10 +70,10 @@ public class Customer {
     }
 
     public boolean isOver18(String personalNo) {
-        String dateOfBirth = personalNo.substring(0, 3);
+        String dateOfBirth = personalNo.substring(0,4);
         int thisYear = 2019;
         int checkDateOfBirth = Integer.parseInt(dateOfBirth);
-        if (checkDateOfBirth - thisYear >= 18) {
+        if (thisYear - checkDateOfBirth  >= 18) {
             return true;
         } else
             return false;
